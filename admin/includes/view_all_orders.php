@@ -31,14 +31,13 @@ $fetch_orders = mysqli_query($connection, $query);
                 $total = number_format($row['total_amount'], 2);
                 $order_date = date('M j, Y g:i A', strtotime($row['order_date']));
                 $status = htmlspecialchars($row['status']);
-                $status_class = $status === 'pending' ? 'warning' : ($status === 'completed' ? 'success' : 'default');
                 echo "<tr>
                     <td>{$order_id}</td>
                     <td>{$customer_username}</td>
                     <td>{$customer_email}</td>
                     <td>₱{$total}</td>
                     <td>{$order_date}</td>
-                    <td><span class='label label-{$status_class}'>{$status}</span></td>
+                    <td>{$status}</td>
                     <td>
                         <a href='orders.php?source=view_order&order_id={$order_id}' class='btn btn-sm btn-info'>View Details</a>
                     </td>

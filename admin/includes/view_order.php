@@ -58,9 +58,8 @@ $items_result = mysqli_query($connection, $items_query);
                         <th>Status</th>
                         <td>
                             <?php
-                            $status = htmlspecialchars($order['status']);
-                            $status_class = $status === 'pending' ? 'warning' : ($status === 'completed' ? 'success' : 'default');
-                            echo "<span class='label label-{$status_class}'>{$status}</span>";
+                            // Show plain status text without colored label
+                            echo htmlspecialchars($order['status']);
                             ?>
                         </td>
                     </tr>

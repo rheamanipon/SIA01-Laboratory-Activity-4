@@ -41,11 +41,24 @@ include "includes/navigation.php";
                     <hr>
                     <p><?php echo $description; ?></p>
                     <p><span class="glyphicon glyphicon-tag"></span> In stock: <?php echo $stock_quantity; ?></p>
-                    <form action="includes/add_to_cart.php" method="get" style="display: inline;">
+                    <form action="includes/add_to_cart.php" method="get" class="form-inline" style="display: inline-block; margin-top: 10px;">
                         <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-                        <input type="hidden" name="quantity" value="1">
                         <input type="hidden" name="redirect" value="product.php?id=<?php echo $product_id; ?>">
-                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
+                        <div class="form-group">
+                            <label for="quantity" class="sr-only">Quantity</label>
+                            <input
+                                type="number"
+                                name="quantity"
+                                id="quantity"
+                                value="1"
+                                min="1"
+                                max="<?php echo $stock_quantity; ?>"
+                                class="form-control"
+                                style="width: 80px; display: inline-block;">
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
+                        </button>
                     </form>
                     <hr>
             <?php
